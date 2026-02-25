@@ -544,6 +544,12 @@ main {
 
 .service-icon-box img { margin: auto; }
 
+.service-icon-box svg {
+  display: block;
+  margin: auto;
+  fill: var(--orange-yellow-crayola);
+}
+
 .service-content-box { text-align: center; }
 
 .service-item-title { margin-bottom: 7px; }
@@ -829,6 +835,10 @@ main {
   line-height: 1.6;
 }
 
+.timeline-item:first-child .timeline-item-title {
+  color: var(--orange-yellow-crayola);
+}
+
 
 /**
  * skills 
@@ -1024,6 +1034,109 @@ main {
   color: var(--light-gray-70);
   font-size: var(--fs-6);
   font-weight: var(--fw-300);
+}
+
+.ai-card {
+  display: block;
+  background: var(--eerie-black-2);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  padding: 16px;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.ai-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+.ai-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.ai-tagline {
+  margin: 0 0 12px 0;
+  opacity: 0.9;
+  line-height: 1.35;
+}
+
+.ai-meta p {
+  margin: 6px 0;
+  font-size: 0.92rem;
+  opacity: 0.92;
+}
+
+.ai-meta span {
+  opacity: 0.7;
+  margin-right: 6px;
+}
+
+.ai-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.ai-badge {
+  font-size: 0.78rem;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+/* =========================
+   Core Technologies (Resume)
+   ========================= */
+
+.core-tech-card {
+  padding: 22px;
+}
+
+.core-tech-group:not(:last-child) {
+  margin-bottom: 18px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.core-tech-title {
+  margin-bottom: 12px;
+  color: var(--white-2);
+}
+
+.core-tech-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.core-tech-badges img {
+  height: 28px;
+  max-width: 100%;
+  border-radius: 6px;
+}
+
+.ai-pill {
+  font-size: 0.78rem;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  white-space: nowrap;
+}
+
+.ai-link {
+  margin-top: 12px;
+  font-weight: 600;
+  opacity: 0.9;
 }
 
 
@@ -1879,4 +1992,61 @@ textarea.form-input::-webkit-resizer { display: none; }
 
   .timeline-text { max-width: 700px; }
 
+}
+
+/*-----------------------------------*\
+  #PORTFOLIO AI CARD OVERRIDES
+\*-----------------------------------*/
+
+.portfolio .ai-card,
+.portfolio .ai-card * {
+  color: var(--light-gray);
+}
+
+.portfolio .ai-card .project-title {
+  color: var(--orange-yellow-crayola);
+}
+
+.portfolio .ai-card .ai-meta {
+  color: var(--light-gray);
+}
+
+.portfolio .ai-card .ai-meta span {
+  color: var(--light-gray-70);
+}
+
+.portfolio .ai-card .ai-badge,
+.portfolio .ai-card .ai-pill {
+  color: var(--white-2);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.portfolio .ai-card .ai-link {
+  color: var(--orange-yellow-crayola);
+}
+
+/* Force portfolio cards to stack vertically */
+.portfolio .project-list {
+  grid-template-columns: 1fr;
+}
+
+/* =========================
+   AI Badge Icons (SVG)
+   ========================= */
+
+.ai-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ai-badge-icon {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+  fill: var(--orange-yellow-crayola);
+  opacity: 0.95;
+  position: relative;
+  top: 1px;
 }

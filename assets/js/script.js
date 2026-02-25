@@ -84,7 +84,7 @@ const filterFunc = function (selectedValue) {
 
     if (selectedValue === "all") {
       filterItems[i].classList.add("active");
-    } else if (selectedValue === filterItems[i].dataset.category) {
+    } else if (selectedValue === filterItems[i].dataset.category.toLowerCase()) {
       filterItems[i].classList.add("active");
     } else {
       filterItems[i].classList.remove("active");
@@ -157,3 +157,85 @@ for (let i = 0; i < navigationLinks.length; i++) {
 
   });
 }
+
+
+// =========================
+// Badge Icon Auto-Mapping
+// =========================
+const BADGE_ICON_MAP = {
+  // AI / Agentic
+  "agentic": "icon-agentic",
+  "rag": "icon-agentic",
+  "pdf intelligence": "icon-dab",
+  "pdf": "icon-dab",
+  "document q&a": "icon-dab",
+
+  // Databricks / Delivery
+  "dab": "icon-dab",
+  "asset packaging": "icon-dab",
+  "reusable": "icon-dab",
+  "ci/cd": "icon-cicd",
+  "github actions": "icon-github",
+  "workflows": "icon-cicd",
+
+  // Platform / Governance
+  "platform architecture": "icon-platform",
+  "enterprise governance": "icon-governance",
+  "governance-by-design": "icon-governance",
+  "audit-ready": "icon-audit",
+  "secrets managed": "icon-secrets",
+  "secrets management": "icon-secrets",
+
+  // Ops / Cloud
+  "serverless": "icon-serverless",
+  "scheduled automation": "icon-scheduled",
+
+  // Data
+  "sql": "icon-sql",
+  "sql + docs": "icon-sql",
+  "analytics": "icon-analytics",
+  "fast insights": "icon-fast",
+
+  // Quality
+  "production-grade": "icon-prod"
+};
+
+function normalizeBadgeLabel(text) {
+  return (text || "")
+    .replace(/\s+/g, " ")
+    .trim()
+    .toLowerCase();
+}
+
+function injectBadgeIcons() {
+  const badges = document.querySelectorAll(".ai-badge");
+
+  badges.forEach((badge) => {
+    // Skip if icon already exists
+    if (badge.querySelector("svg.ai-badge-icon")) return;
+
+    const label = normalizeBadgeLabel(badge.textContent);
+    const iconId = BADGE_ICON_MAP[label];
+
+    if (!iconId) return;
+
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("class", "ai-badge-icon");
+    svg.setAttribute("aria-hidden", "true");
+    svg.setAttribute("viewBox", "0 0 24 24");
+
+    const use = document.createElementNS("http://www.w3.org/2000/svg", "use");
+    use.setAttribute("href", `#${iconId}`);
+
+    svg.appendChild(use);
+
+    // Prepend icon before text
+    badge.prepend(svg);
+
+    // Ensure spacing between icon and label
+    badge.insertBefore(document.createTextNode(" "), badge.childNodes[1]);
+  });
+}
+
+// Run after DOM is ready
+document.addEventListener("DOMContentLoaded", injectBadgeIcons);
