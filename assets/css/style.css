@@ -334,6 +334,12 @@ main {
 .avatar-box {
   background: var(--bg-gradient-onyx);
   border-radius: 20px;
+  overflow: hidden;
+}
+
+.avatar-box img {
+  border-radius: 20px;
+  display: block;
 }
 
 .info-content .name {
@@ -441,6 +447,22 @@ main {
 .social-item .social-link {
   color: var(--light-gray-70);
   font-size: 18px;
+}
+
+.social-item .social-link .social-icon {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+.social-item .social-link .social-icon-x .x-bg { fill: var(--white-1); }
+
+.social-item .social-link .social-icon-x .x-stroke {
+  stroke: var(--eerie-black-1);
+  stroke-width: 2.2;
+  stroke-linecap: square;
+  stroke-linejoin: miter;
+  fill: none;
 }
 
 
